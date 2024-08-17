@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4392219, g: 0.4875098, b: 0.56775725, a: 1}
+  m_IndirectSpecularColor: {r: 0.1747039, g: 0.21852474, b: 0.30079046, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -886,7 +886,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!108 &253171455
 Light:
@@ -939,7 +939,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1280,7 +1280,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!64 &347552555
 MeshCollider:
@@ -3402,26 +3402,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 924970640}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &924970642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6139542934539613794, guid: 303ba0297c6eab546a6f449b15eececb,
-    type: 3}
-  m_PrefabInstance: {fileID: 924970640}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &924970643
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924970642}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3991436035151109324, guid: 9d4a98f864e72864a9b50c7901b2f3e0, type: 3}
 --- !u!1 &1011596720
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,7 +6463,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_MOD_Wall_02_O_sloped_med_L
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3349653959330452883, guid: f0e74c07cf449734588185f88302298d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0e74c07cf449734588185f88302298d, type: 3}
 --- !u!4 &1671457427 stripped
 Transform:

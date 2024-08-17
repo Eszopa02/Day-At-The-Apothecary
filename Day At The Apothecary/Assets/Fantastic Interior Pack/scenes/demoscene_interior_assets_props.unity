@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4392219, g: 0.4875098, b: 0.56775725, a: 1}
+  m_IndirectSpecularColor: {r: 0.1747039, g: 0.21852474, b: 0.30079046, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -495,6 +495,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 23972042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &23972044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039271392756427854, guid: bc7f58c65bb9e09458a5d8becaabfe02,
+    type: 3}
+  m_PrefabInstance: {fileID: 23972042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &23972045
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23972044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.86
+  m_Direction: 0
+  m_Center: {x: -0.0014881492, y: 0.14728302, z: -0.0036445633}
 --- !u!4 &26321063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6467719372320122565, guid: c51c6b890d70bb9498becbf96f2d1543,
@@ -1258,11 +1278,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 917126766}
     m_Modifications:
-    - target: {fileID: 546229741703686718, guid: a1eb3cadb49085446b19a8157b250279,
-        type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6862796481862905584, guid: a1eb3cadb49085446b19a8157b250279,
         type: 3}
       propertyPath: m_Name
@@ -2668,7 +2683,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!108 &253171455
 Light:
@@ -2721,7 +2736,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3747,7 +3762,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!64 &347552555
 MeshCollider:
@@ -3986,11 +4001,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788251076}
     m_Modifications:
-    - target: {fileID: 91065967608874641, guid: 59f898ce327a0aa4a86f11f780b22a3a,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     - target: {fileID: 3566847226566890264, guid: 59f898ce327a0aa4a86f11f780b22a3a,
         type: 3}
       propertyPath: m_IsActive
@@ -4455,11 +4465,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7902858909676633016, guid: bb3455792564e434ab0da982af28d3fe,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
       objectReference: {fileID: 0}
     - target: {fileID: 7952756199027715245, guid: bb3455792564e434ab0da982af28d3fe,
         type: 3}
@@ -6141,11 +6146,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4706619441694397514, guid: ec1606d5572aa7044a2683980294ab99,
-        type: 3}
-      propertyPath: m_Name
-      value: Particle_steam_interior
       objectReference: {fileID: 0}
     - target: {fileID: 4706619443340905144, guid: ec1606d5572aa7044a2683980294ab99,
         type: 3}
@@ -9690,11 +9690,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2328642876739987468, guid: 01f1f84d09b37b241bf120d30ff6eb91,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     - target: {fileID: 2938042120852739051, guid: 01f1f84d09b37b241bf120d30ff6eb91,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -11113,21 +11108,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: COMP_PROP_bookshelf_interior_03
       objectReference: {fileID: 0}
-    - target: {fileID: 6360959056247017299, guid: e4333a067757bc2438df2415ab6ef685,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
-    - target: {fileID: 6448054124570376891, guid: e4333a067757bc2438df2415ab6ef685,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
-    - target: {fileID: 8678048663906248540, guid: e4333a067757bc2438df2415ab6ef685,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4333a067757bc2438df2415ab6ef685, type: 3}
 --- !u!4 &935351116 stripped
@@ -12128,11 +12108,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: COMP_PROP_fireplace_interior_01
       objectReference: {fileID: 0}
-    - target: {fileID: 4164082072508864169, guid: 5120f0c73af6ddb45bef307b795e04a3,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     - target: {fileID: 4412223224010384202, guid: 5120f0c73af6ddb45bef307b795e04a3,
         type: 3}
       propertyPath: m_RootOrder
@@ -13064,11 +13039,6 @@ PrefabInstance:
       propertyPath: m_Range
       value: 0.55024314
       objectReference: {fileID: 0}
-    - target: {fileID: 254871624258804291, guid: b7abb6ac7b0c609488fa172822bbdc6f,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     - target: {fileID: 1664965753703761658, guid: b7abb6ac7b0c609488fa172822bbdc6f,
         type: 3}
       propertyPath: m_Name
@@ -13929,10 +13899,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_PROP_woodlogs_interior
       objectReference: {fileID: 0}
-    - target: {fileID: 6495490566994932061, guid: 60f22d98d2f0f8a44bb395712df14911,
+    - target: {fileID: 6495490566994932060, guid: 60f22d98d2f0f8a44bb395712df14911,
         type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
+      propertyPath: m_Range
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495490566994932063, guid: 60f22d98d2f0f8a44bb395712df14911,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.231
       objectReference: {fileID: 0}
     - target: {fileID: 8010850560164448059, guid: 60f22d98d2f0f8a44bb395712df14911,
         type: 3}
@@ -15458,11 +15433,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 1.0051825
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495490566994932061, guid: 60f22d98d2f0f8a44bb395712df14911,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
       objectReference: {fileID: 0}
     - target: {fileID: 6495490566994932063, guid: 60f22d98d2f0f8a44bb395712df14911,
         type: 3}
@@ -17321,11 +17291,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788251076}
     m_Modifications:
-    - target: {fileID: 34117418923207665, guid: 92438e9dc3088724489c3761e2ab970a,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
-      objectReference: {fileID: 0}
     - target: {fileID: 3396687233632525017, guid: 92438e9dc3088724489c3761e2ab970a,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -18300,11 +18265,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 1.0051825
-      objectReference: {fileID: 0}
-    - target: {fileID: 6495490566994932061, guid: 60f22d98d2f0f8a44bb395712df14911,
-        type: 3}
-      propertyPath: m_Name
-      value: pointlight_fire_interior
       objectReference: {fileID: 0}
     - target: {fileID: 6495490566994932063, guid: 60f22d98d2f0f8a44bb395712df14911,
         type: 3}
@@ -19579,6 +19539,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1786038279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1786038281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2300750825253052703, guid: f93b859c9ecbd29489dc21e435ca4351,
+    type: 3}
+  m_PrefabInstance: {fileID: 1786038279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1786038282
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786038281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 0.55
+  m_Direction: 0
+  m_Center: {x: -0.00055426365, y: 0.0006225258, z: -0.0017130731}
 --- !u!1001 &1786934344
 PrefabInstance:
   m_ObjectHideFlags: 0

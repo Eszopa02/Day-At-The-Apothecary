@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1327691931261800498}
   - component: {fileID: 8014136269561670148}
   - component: {fileID: 4326665197046978301}
-  - component: {fileID: 3768383958412367310}
+  - component: {fileID: 7742319636530481913}
   m_Layer: 0
   m_Name: P_MOD_Trapdoor_interior_01
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3768383958412367310
+--- !u!64 &7742319636530481913
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 216763937578482382}
   - component: {fileID: 1793518633029090761}
   - component: {fileID: 1516760290518109144}
-  - component: {fileID: 5337245430849997082}
+  - component: {fileID: 1957645163094178705}
   m_Layer: 0
   m_Name: MOD_Trapdoor_door_interior_01
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5337245430849997082
+--- !u!65 &1957645163094178705
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,5 +186,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6108376, y: 0.12, z: 1.5728658}
+  m_Size: {x: 1.6108376, y: 0.2, z: 1.5728658}
   m_Center: {x: -0.764131, y: 0, z: 0.03270012}

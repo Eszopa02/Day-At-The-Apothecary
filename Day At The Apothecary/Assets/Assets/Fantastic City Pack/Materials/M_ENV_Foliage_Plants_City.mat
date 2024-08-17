@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ENV_Foliage_Plants_City
-  m_Shader: {fileID: 4800000, guid: e8d3a7ed836dc324b99a1c08ca476811, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6f0a79cdc55289f43a72a135161c9e87, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -68,12 +68,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaClipThreshold: 0.5
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DistanceFadeEnd: 50
+    - _DistanceFadeEnd: 74.52
     - _DistanceFadeOpacity: 0.021
-    - _DistanceFadeStart: 20
+    - _DistanceFadeStart: 53.6
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
@@ -84,22 +86,23 @@ Material:
     - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ShadowRecievedStrength: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _Usevertexcolorforwind: 0
-    - _WindScale: 0.472
-    - _WindStrength: 0.03
+    - _WindScale: 0.224
+    - _WindStrength: 0.167
     - _WindTintContrast: 1
-    - _WindTintOpacity: 0.01
+    - _WindTintOpacity: 0
     - _WindTintScale: 0.43
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
     - _BaseTexColorTint: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DistanceFadeColor: {r: 0.5333334, g: 0.6745098, b: 0.1607843, a: 1}
+    - _DistanceFadeColor: {r: 0.21176471, g: 0.5019608, b: 0.6039216, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundFadeColor: {r: 1, g: 1, b: 1, a: 1}
     - _WindSpeed: {r: 2, g: 1, b: 0, a: 0}

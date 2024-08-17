@@ -290,7 +290,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 2.561123, y: 6.978531}
+  m_AreaSize: {x: 2.0593176, y: 6.081338}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -383,7 +383,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 2.413845, y: 7.3269515}
+  m_AreaSize: {x: 1.7359054, y: 6.3075624}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -8603,7 +8603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392187695506293917, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
       propertyPath: m_AreaSize.x
-      value: 10.836162
+      value: 10.209621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392187695506293917, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
+      propertyPath: m_AreaSize.y
+      value: 5.6352925
       objectReference: {fileID: 0}
     - target: {fileID: 1971190700434144632, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
       propertyPath: m_RootOrder
@@ -8675,7 +8679,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601091325657529510, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
       propertyPath: m_AreaSize.x
-      value: 10.829089
+      value: 10.037051
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601091325657529510, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
+      propertyPath: m_AreaSize.y
+      value: 5.4335337
       objectReference: {fileID: 0}
     - target: {fileID: 6791861335298635673, guid: 9cd6d8955fbd6f6419c858ed024515fd, type: 3}
       propertyPath: m_Materials.Array.data[0]
