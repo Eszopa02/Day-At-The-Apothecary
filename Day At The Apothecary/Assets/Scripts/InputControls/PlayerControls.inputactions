@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Sprinting",
+                    "type": "Button",
+                    "id": "322d90d3-9981-41b9-8bea-30d3dffa258d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -114,32 +123,26 @@
                     "action": "Directions",
                     "isComposite": false,
                     "isPartOfComposite": true
-                }
-            ]
-        },
-        {
-            "name": "Aiming",
-            "id": "7f63decc-6935-45b0-8dd3-66f6b40a3c46",
-            "actions": [
-                {
-                    "name": "AimMouse",
-                    "type": "Value",
-                    "id": "5ff44ac5-767f-440b-a35e-759004fe08f2",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "2795a1cb-678b-40d5-810c-3332888c5f86",
-                    "path": "<Mouse>/position",
+                    "id": "0e66344f-859d-4c1e-a11a-e704e377ad66",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AimMouse",
+                    "action": "Sprinting",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "525c05b0-b3f0-4f45-8474-2835650c0351",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprinting",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

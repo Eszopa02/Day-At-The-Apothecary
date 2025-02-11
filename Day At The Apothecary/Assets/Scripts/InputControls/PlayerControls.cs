@@ -35,6 +35,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Sprinting"",
+                    ""type"": ""Button"",
+                    ""id"": ""322d90d3-9981-41b9-8bea-30d3dffa258d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -136,32 +145,26 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Directions"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""Aiming"",
-            ""id"": ""7f63decc-6935-45b0-8dd3-66f6b40a3c46"",
-            ""actions"": [
-                {
-                    ""name"": ""AimMouse"",
-                    ""type"": ""Value"",
-                    ""id"": ""5ff44ac5-767f-440b-a35e-759004fe08f2"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
+                },
                 {
                     ""name"": """",
-                    ""id"": ""2795a1cb-678b-40d5-810c-3332888c5f86"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""0e66344f-859d-4c1e-a11a-e704e377ad66"",
+                    ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AimMouse"",
+                    ""action"": ""Sprinting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""525c05b0-b3f0-4f45-8474-2835650c0351"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprinting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -173,9 +176,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Directions = m_Movement.FindAction("Directions", throwIfNotFound: true);
-        // Aiming
-        m_Aiming = asset.FindActionMap("Aiming", throwIfNotFound: true);
-        m_Aiming_AimMouse = m_Aiming.FindAction("AimMouse", throwIfNotFound: true);
+        m_Movement_Sprinting = m_Movement.FindAction("Sprinting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,11 +239,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_Directions;
+    private readonly InputAction m_Movement_Sprinting;
     public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
         public MovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Directions => m_Wrapper.m_Movement_Directions;
+        public InputAction @Sprinting => m_Wrapper.m_Movement_Sprinting;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -255,6 +258,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Directions.started += instance.OnDirections;
             @Directions.performed += instance.OnDirections;
             @Directions.canceled += instance.OnDirections;
+            @Sprinting.started += instance.OnSprinting;
+            @Sprinting.performed += instance.OnSprinting;
+            @Sprinting.canceled += instance.OnSprinting;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -262,6 +268,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Directions.started -= instance.OnDirections;
             @Directions.performed -= instance.OnDirections;
             @Directions.canceled -= instance.OnDirections;
+            @Sprinting.started -= instance.OnSprinting;
+            @Sprinting.performed -= instance.OnSprinting;
+            @Sprinting.canceled -= instance.OnSprinting;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -279,58 +288,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
-
-    // Aiming
-    private readonly InputActionMap m_Aiming;
-    private List<IAimingActions> m_AimingActionsCallbackInterfaces = new List<IAimingActions>();
-    private readonly InputAction m_Aiming_AimMouse;
-    public struct AimingActions
-    {
-        private @PlayerControls m_Wrapper;
-        public AimingActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @AimMouse => m_Wrapper.m_Aiming_AimMouse;
-        public InputActionMap Get() { return m_Wrapper.m_Aiming; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AimingActions set) { return set.Get(); }
-        public void AddCallbacks(IAimingActions instance)
-        {
-            if (instance == null || m_Wrapper.m_AimingActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_AimingActionsCallbackInterfaces.Add(instance);
-            @AimMouse.started += instance.OnAimMouse;
-            @AimMouse.performed += instance.OnAimMouse;
-            @AimMouse.canceled += instance.OnAimMouse;
-        }
-
-        private void UnregisterCallbacks(IAimingActions instance)
-        {
-            @AimMouse.started -= instance.OnAimMouse;
-            @AimMouse.performed -= instance.OnAimMouse;
-            @AimMouse.canceled -= instance.OnAimMouse;
-        }
-
-        public void RemoveCallbacks(IAimingActions instance)
-        {
-            if (m_Wrapper.m_AimingActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IAimingActions instance)
-        {
-            foreach (var item in m_Wrapper.m_AimingActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_AimingActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public AimingActions @Aiming => new AimingActions(this);
     public interface IMovementActions
     {
         void OnDirections(InputAction.CallbackContext context);
-    }
-    public interface IAimingActions
-    {
-        void OnAimMouse(InputAction.CallbackContext context);
+        void OnSprinting(InputAction.CallbackContext context);
     }
 }

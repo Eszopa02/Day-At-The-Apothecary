@@ -3,55 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Code from Eden Szopas and from Unity Ace 
 public class RotatePlayer : MonoBehaviour
 {
-    [SerializeField]
-    private float RotationSpeed;
+    public Transform MainPlayer;
+    public float MouseSensitivity = 2f;
+    float CameraVerticalRotation = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        RotationSpeed = RotationSpeed == 0 ? 10 : RotationSpeed;
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        MainPlayer = MainPlayer == null ? GameObject.FindGameObjectWithTag("Player").transform : MainPlayer;
+        MouseSensitivity = MouseSensitivity == 0 ? 0.25f : MouseSensitivity;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerRotate();
+        PlayerRotation();
     }
     
-    //might have to redo this section to better follow mouse =_=
-    private void PlayerRotate()
+    private void PlayerRotation()
     {
-        /*
-         Some help from:
-        https://stackoverflow.com/questions/68700056/how-to-check-if-my-mouse-pointer-in-the-left-right-part-of-my-screen-on-unity-c
+        //https://stackoverflow.com/questions/64327135/how-to-convert-input-getaxismouse-x-or-input-getaxismouse-y-to-the-new-i
+        //Helped with converting mouse detection from new Input System
+        float inputX = Mouse.current.delta.x.ReadValue() * MouseSensitivity;
+        float inputY = Mouse.current.delta.y.ReadValue() * MouseSensitivity;
 
-         */
-        var temp = new Vector2();
-        if (Input.mousePosition.x < Screen.width / 3f) //left
-        {
-            temp.y = -1;
-        }
-        else if(Input.mousePosition.x > (Screen.width / 3f) * 2) // => right half
-        {   
-            temp.y = 1;
-        }
-        else
-        {
-            temp.y = 0;
-        }
+        CameraVerticalRotation -= inputY;
+        CameraVerticalRotation = Mathf.Clamp(CameraVerticalRotation, -12f, 50f);
+        transform.localEulerAngles = Vector3.right * CameraVerticalRotation;
 
-        /*
-        if(Input.mousePosition.y < Screen.height / 3f) //down
-        {
-            temp.x = 1;
-        }
-        else if(Input.mousePosition.y > (Screen.width / 3f) * 2)
-        {
-            temp.x = -1;
-        }*/
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x + temp.x, transform.eulerAngles.y + temp.y, 0);
+        MainPlayer.Rotate(Vector3.up * inputX);
     }
 }

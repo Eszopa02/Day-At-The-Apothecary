@@ -8,9 +8,13 @@ public class Player : MonoBehaviour, IEntity
 {
     private PlayerControls PC;
     private InputAction Move;
+    private InputAction Sprint;
 
     [SerializeField]
     private float movementSpeed;
+
+    [SerializeField]
+    private float fasterSpeed;
 
     public Vector3 Direction { get; set; }
     public float MovementSpeed { get => movementSpeed; 
@@ -30,19 +34,21 @@ public class Player : MonoBehaviour, IEntity
         Move = PC.Movement.Directions;
         Move.Enable();
 
-        //PC.Movement.Directions.performed += PlayerMove;
+        Sprint = PC.Movement.Sprinting;
+        Sprint.Enable();
     }
 
     private void OnDisable()
     {
         Move.Disable();
-        //PC.Movement.Directions.performed -= PlayerMove;
+        Sprint.Disable();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         MovementSpeed = MovementSpeed == 0 ? 5 : MovementSpeed; //checks and assigns if value is 0
+        fasterSpeed = fasterSpeed == 0 ? MovementSpeed + 10 : fasterSpeed; //checks and assigns if value is 0
         DefaultSpeed = MovementSpeed;
     }
 
@@ -50,6 +56,7 @@ public class Player : MonoBehaviour, IEntity
     void FixedUpdate()
     {
         PlayerMove();
+        FasterPlayer();
     }
 
     //Moves the player based on which buttons are pressed and move to 
@@ -66,6 +73,17 @@ public class Player : MonoBehaviour, IEntity
         transform.Translate(dir * MovementSpeed * Time.fixedDeltaTime);
     }
 
+    private void FasterPlayer()
+    {
+        if (Sprint.IsPressed())
+        {
+            MovementSpeed = fasterSpeed;
+        }
+        else
+        {
+            MovementSpeed = DefaultSpeed;
+        }
+    }
    
    
 }
