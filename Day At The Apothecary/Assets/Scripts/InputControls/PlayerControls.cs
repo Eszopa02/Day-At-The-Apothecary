@@ -44,6 +44,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""09906dda-ddc0-49c9-8056-c143e7689bff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitScreen"",
+                    ""type"": ""Button"",
+                    ""id"": ""aea264ce-0a0e-4981-ba78-c70191d01e53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -167,6 +185,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Sprinting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b8365ec-39e2-447a-bf7b-6dbad9605e1d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc6fe81c-e4a1-4981-8799-24c4f298a912"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6271b95d-0b6b-4fff-8453-0a1e1854e93f"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitScreen"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +228,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Directions = m_Movement.FindAction("Directions", throwIfNotFound: true);
         m_Movement_Sprinting = m_Movement.FindAction("Sprinting", throwIfNotFound: true);
+        m_Movement_Interaction = m_Movement.FindAction("Interaction", throwIfNotFound: true);
+        m_Movement_ExitScreen = m_Movement.FindAction("ExitScreen", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +293,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IMovementActions> m_MovementActionsCallbackInterfaces = new List<IMovementActions>();
     private readonly InputAction m_Movement_Directions;
     private readonly InputAction m_Movement_Sprinting;
+    private readonly InputAction m_Movement_Interaction;
+    private readonly InputAction m_Movement_ExitScreen;
     public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
         public MovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Directions => m_Wrapper.m_Movement_Directions;
         public InputAction @Sprinting => m_Wrapper.m_Movement_Sprinting;
+        public InputAction @Interaction => m_Wrapper.m_Movement_Interaction;
+        public InputAction @ExitScreen => m_Wrapper.m_Movement_ExitScreen;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +318,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprinting.started += instance.OnSprinting;
             @Sprinting.performed += instance.OnSprinting;
             @Sprinting.canceled += instance.OnSprinting;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
+            @ExitScreen.started += instance.OnExitScreen;
+            @ExitScreen.performed += instance.OnExitScreen;
+            @ExitScreen.canceled += instance.OnExitScreen;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -271,6 +334,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprinting.started -= instance.OnSprinting;
             @Sprinting.performed -= instance.OnSprinting;
             @Sprinting.canceled -= instance.OnSprinting;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+            @ExitScreen.started -= instance.OnExitScreen;
+            @ExitScreen.performed -= instance.OnExitScreen;
+            @ExitScreen.canceled -= instance.OnExitScreen;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -292,5 +361,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnDirections(InputAction.CallbackContext context);
         void OnSprinting(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
+        void OnExitScreen(InputAction.CallbackContext context);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour, IEntity
+public class Player : MonoBehaviour, IEntity, IPlayer
 {
     private PlayerControls PC;
     private InputAction Move;
@@ -24,8 +24,8 @@ public class Player : MonoBehaviour, IEntity
         } 
     }
     public float DefaultSpeed { get; set; }
-    
-   
+    public bool IsActive { get; set; }
+
     private void Awake()
     {
         PC = new PlayerControls();
@@ -48,15 +48,20 @@ public class Player : MonoBehaviour, IEntity
     void Start()
     {
         MovementSpeed = MovementSpeed == 0 ? 5 : MovementSpeed; //checks and assigns if value is 0
-        fasterSpeed = fasterSpeed == 0 ? MovementSpeed + 10 : fasterSpeed; //checks and assigns if value is 0
+        fasterSpeed = fasterSpeed == 0 ? MovementSpeed + 5 : fasterSpeed; 
         DefaultSpeed = MovementSpeed;
+        IsActive = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        PlayerMove();
-        FasterPlayer();
+        if(IsActive)
+        {
+            PlayerMove();
+            FasterPlayer();
+        }
+        
     }
 
     //Moves the player based on which buttons are pressed and move to 
@@ -94,4 +99,9 @@ public interface IEntity
     public Vector3 Direction { get;set;}
     public float MovementSpeed { get; set; }
     public float DefaultSpeed { get; set; }
+}
+
+public interface IPlayer
+{
+    public bool IsActive { get; set; }
 }

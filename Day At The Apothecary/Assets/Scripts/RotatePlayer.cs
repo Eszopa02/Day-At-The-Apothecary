@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 //Code from Eden Szopas and from Unity Ace 
-public class RotatePlayer : MonoBehaviour
+public class RotatePlayer : MonoBehaviour, IPlayer
 {
     public Transform MainPlayer;
     public float MouseSensitivity = 2f;
     float CameraVerticalRotation = 0f;
+
+    public bool IsActive { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,11 @@ public class RotatePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerRotation();
+        if(IsActive)
+        {
+            PlayerRotation();
+        }
+        
     }
     
     private void PlayerRotation()
