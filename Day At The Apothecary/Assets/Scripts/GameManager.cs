@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-enum GameState { Start, End, Pause, Exploring, Interacting }
+enum GameState { Start, End, Pause, Exploring, Interacting, Viewing }
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     private Player MainPlayer;
     private RotatePlayer RotPlayer;
+    private Inventory PlayerInventory;
 
     [SerializeField]
     private GameObject[] Interactions;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         MainPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         RotPlayer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RotatePlayer>();
+        PlayerInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
 
         Interactions = new GameObject[GameObject.FindGameObjectsWithTag("Interactables").Length];
         for(int i = 0; i < Interactions.Length; i++)
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
                 
                 break;
             case GameState.Interacting:
+            case GameState.Viewing:
                 MainPlayer.IsActive = false;
                 RotPlayer.IsActive = false;
                 break;
@@ -62,6 +65,10 @@ public class GameManager : MonoBehaviour
         if(Interactions.Where(x => x.GetComponent<InteractableObject>().IsDisplayed).Any())
         {
             GS = GameState.Interacting;
+        }
+        else if(PlayerInventory.IsViewingInventory)
+        {
+            GS = GameState.Viewing;
         }
         else
         {

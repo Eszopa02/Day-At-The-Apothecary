@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AccessInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""b841d0e3-f81b-4ce4-a1a3-7da6e5db6af7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""ExitScreen"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40415732-d921-4621-ace8-7ddf4ff03fe4"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AccessInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +250,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Movement_Sprinting = m_Movement.FindAction("Sprinting", throwIfNotFound: true);
         m_Movement_Interaction = m_Movement.FindAction("Interaction", throwIfNotFound: true);
         m_Movement_ExitScreen = m_Movement.FindAction("ExitScreen", throwIfNotFound: true);
+        m_Movement_AccessInventory = m_Movement.FindAction("AccessInventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +316,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Sprinting;
     private readonly InputAction m_Movement_Interaction;
     private readonly InputAction m_Movement_ExitScreen;
+    private readonly InputAction m_Movement_AccessInventory;
     public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -303,6 +325,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Sprinting => m_Wrapper.m_Movement_Sprinting;
         public InputAction @Interaction => m_Wrapper.m_Movement_Interaction;
         public InputAction @ExitScreen => m_Wrapper.m_Movement_ExitScreen;
+        public InputAction @AccessInventory => m_Wrapper.m_Movement_AccessInventory;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -324,6 +347,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ExitScreen.started += instance.OnExitScreen;
             @ExitScreen.performed += instance.OnExitScreen;
             @ExitScreen.canceled += instance.OnExitScreen;
+            @AccessInventory.started += instance.OnAccessInventory;
+            @AccessInventory.performed += instance.OnAccessInventory;
+            @AccessInventory.canceled += instance.OnAccessInventory;
         }
 
         private void UnregisterCallbacks(IMovementActions instance)
@@ -340,6 +366,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @ExitScreen.started -= instance.OnExitScreen;
             @ExitScreen.performed -= instance.OnExitScreen;
             @ExitScreen.canceled -= instance.OnExitScreen;
+            @AccessInventory.started -= instance.OnAccessInventory;
+            @AccessInventory.performed -= instance.OnAccessInventory;
+            @AccessInventory.canceled -= instance.OnAccessInventory;
         }
 
         public void RemoveCallbacks(IMovementActions instance)
@@ -363,5 +392,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnSprinting(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnExitScreen(InputAction.CallbackContext context);
+        void OnAccessInventory(InputAction.CallbackContext context);
     }
 }

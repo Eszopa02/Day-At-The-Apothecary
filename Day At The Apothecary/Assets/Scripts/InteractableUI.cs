@@ -7,28 +7,46 @@ public class InteractableObject : MonoBehaviour
 {
     
     private GameObject ObjectName;
+
     private GameObject TextDisplay;
     private GameObject Canvas;
 
     private PlayerControls PC;
 
-    private bool IsCloseProximity;
+    public bool IsCloseProximity;
 
     public bool IsDisplayed { get; private set; }
+
+    //private bool UseCanvas;
 
     private void Awake()
     {
         PC = new PlayerControls();
         PC.Enable();
 
-        PC.Movement.Interaction.performed += DisplayCanvas;
-        PC.Movement.ExitScreen.performed += CloseCanvas;
+        if(this.gameObject.CompareTag("Interactables"))
+        {
+            PC.Movement.Interaction.performed += DisplayCanvas;
+            PC.Movement.ExitScreen.performed += CloseCanvas;
+
+            if (Canvas == null)
+            {
+                Canvas = transform.Find("Canvas").gameObject;
+            }
+
+            Canvas.SetActive(false);
+        }
+
+        
     }
 
     private void OnDisable()
     {
-        PC.Movement.Interaction.performed -= DisplayCanvas;
-        PC.Movement.ExitScreen.performed -= CloseCanvas;
+        if (this.gameObject.CompareTag("Interactables"))
+        {
+            PC.Movement.Interaction.performed -= DisplayCanvas;
+            PC.Movement.ExitScreen.performed -= CloseCanvas;
+        }
     }
 
     // Start is called before the first frame update
@@ -45,13 +63,10 @@ public class InteractableObject : MonoBehaviour
             TextDisplay = transform.Find("ControlText").gameObject;
         }
 
-        if(Canvas == null)
-        {
-            Canvas = transform.Find("Canvas").gameObject;
-        }
+       
 
         TextDisplay.SetActive(false);
-        Canvas.SetActive(false);
+        
 
         IsCloseProximity = false;
         IsDisplayed = false;
